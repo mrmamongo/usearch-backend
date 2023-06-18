@@ -6,8 +6,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette import status
 
-from app.database.colleague import Colleague
-from app.database.db import active_session
+from app.database.models.colleague import Colleague
+from app.database.session import active_session
 from app.routers.auth.dependencies import get_current_admin_user
 from app.routers.university.models import (
     UniversityCreate,

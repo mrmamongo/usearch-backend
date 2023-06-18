@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 
-from app.core.utils import as_form
-
 
 class Token(BaseModel):
     access_token: str
@@ -18,16 +16,9 @@ class UserRead(BaseModel):
     full_name: str | None = None
     scores: str
 
-    hashed_password: str
+    password: str
 
     class Config:
         orm_mode = True
 
 
-@as_form
-class UserCreate(BaseModel):
-    username: str
-    email: str
-    full_name: str
-    scores: str
-    password: str

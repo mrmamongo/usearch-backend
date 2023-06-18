@@ -9,8 +9,8 @@ from starlette import status
 
 from app.database import active_session, User
 from app.routers.auth.dependencies import get_password_hash
-from app.routers.auth.models import UserRead, UserCreate
-from app.routers.user.models import UserUpdate
+from app.routers.auth.models import UserRead
+from app.routers.user.models import UserUpdate, UserCreate
 
 router = APIRouter(prefix="/user")
 

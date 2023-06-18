@@ -1,10 +1,8 @@
-import enum
-
 from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.orm import mapped_column, Mapped
 
-from app.database.base import Base
+from app.database.models.base import Base
 
 
 class Colleague(Base):

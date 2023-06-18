@@ -4,7 +4,7 @@ from adaptix import Retort
 from sqlalchemy.orm import mapped_column, Mapped
 
 from app.database.adapter import ModelJSON
-from app.database.base import Base
+from app.database.models.base import Base
 
 RETORT = Retort()
 
@@ -35,6 +35,6 @@ class User(Base):
     full_name: Mapped[str] = mapped_column()
     scores: Mapped[UserScores] = mapped_column(ModelJSON(UserScores, RETORT))
 
-    hashed_password: Mapped[str] = mapped_column()
+    password: Mapped[str] = mapped_column()
 
     admin: Mapped[bool] = mapped_column(default=False)

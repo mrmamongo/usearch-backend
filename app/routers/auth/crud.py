@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database.user import User
+from app.database.models.user import User
 
 
 async def get_user(username: str, session: AsyncSession) -> User | None:

@@ -1,4 +1,2 @@
-from .user import User
-from .university import Colleague
-from .db import active_session
-from .base import Base
+from app.database.models.user import User
+from .session import active_session

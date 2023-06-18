@@ -1,19 +1,13 @@
 import secrets
 from typing import Any, Dict, List, Optional, Union
 
+from fastapi_jwt_auth import AuthJWT
 from pydantic import AnyHttpUrl, BaseConfig, PostgresDsn, validator
 
 
 class Config(BaseConfig):
     API_V1_STR: str = "/api/v1"
-    SECRET_KEY: str = "4138387b6e86a6d4d0347537b954b25aca8ff8644acc67214648b82559f714a6"
-    # 60 minutes * 24 hours * 8 days = 8 days
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    JWT_ALGORITHM = "HS256"
-    SERVER_NAME: str
-    SERVER_HOST: AnyHttpUrl
-    # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
-    # e.g: '["http://localhost", "http://localhost:4200", "http://localhost:3000", \
+    authjwt_secret_key: str = "4138387b6e86a6d4d0347537b954b25aca8ff8644acc67214648b82559f714a6"
     # "http://localhost:8080", "http://local.dockertoolbox.tiangolo.com"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:8000", "https://localhost:8000", "http://localhost",
                                               "http://localhost:5173"]
@@ -50,3 +44,8 @@ class Config(BaseConfig):
 
 
 config = Config()
+
+
+@AuthJWT.load_config
+def get_config():
+    return config
